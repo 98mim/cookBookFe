@@ -1,5 +1,3 @@
-// Home.js
-import CustomNavbar from "../components/CustomNavbar";
 import { useEffect, useState } from "react";
 import { get } from "../util/ApiUtil";
 import CustomCard from "../components/CustomCard";
@@ -19,7 +17,6 @@ function Home() {
 
   return (
     <div>
-      <CustomNavbar />
       {isLoading ? (
         <div>Loading...</div>
       ) : (

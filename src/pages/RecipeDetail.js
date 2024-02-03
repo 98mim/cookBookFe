@@ -15,7 +15,6 @@ function RecipeDetail() {
       .then((data) => {
         setRecipe(data);
         setIsLoading(false);
-        console.log(data);
       })
       .catch((error) => console.error(error));
   }, [id]);
@@ -27,16 +26,16 @@ function RecipeDetail() {
       ) : (
         <div className="flex flex-col items-center">
           {recipe && <RecipeHeader detail={recipe}></RecipeHeader>}
-          <div className="flex flex-row w-3/4 ">
-            <div className="w-1/4">
+          <div className="flex md:flex-row flex-col xl:w-3/4 w-full">
+            <div className="flex w-full md:w-1/2 lg:w-1/4">
               {recipe && recipe.ingredients ? (
                 <Ingredients ingredients={recipe.ingredients}></Ingredients>
               ) : (
                 <div>No ingredients found for this recipe</div>
               )}
             </div>
-            <div className="w-3/4">
-              <Method method={recipe.method}> </Method>
+            <div className="flex sm:w-full md:w-1/2 lg:w-3/4">
+              <Method method={recipe.methods}> </Method>
             </div>
           </div>
         </div>

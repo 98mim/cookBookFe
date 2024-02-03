@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         gistesy: ["gistesy", "cursive"],
+        blackline: ["blackline", "cursive"],
       },
     },
   },

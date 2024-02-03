@@ -2,6 +2,10 @@
   font-family: 'gistesy';
   src: url('/src/fonts/Gistesy-Font/Gistesy.ttf') format('truetype');
 }
+@font-face {
+  font-family: 'blackline';
+  src: url('/src/fonts/KH-Blackline-Script/KH-Blackline-Script-Medium.ttf') format('truetype');
+}
 
 @tailwind base;
 @tailwind components;
