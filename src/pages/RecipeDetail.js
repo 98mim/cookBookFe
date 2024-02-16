@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { get } from "../util/ApiUtil";
 import { useParams } from "react-router-dom";
 import RecipeHeader from "../components/detail/RecipeHeader";
 import Ingredients from "../components/detail/Ingredients";
 import Method from "../components/detail/Method";
+import request from "../util/Api";
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -11,14 +11,14 @@ function RecipeDetail() {
   const [recipe, setRecipe] = useState({});
 
   useEffect(() => {
-    get(`/recipe/detail/${id}`)
-      .then((data) => {
-        setRecipe(data);
+    request
+      .get(`/recipe/detail/${id}`) // Use request.get instead of get
+      .then((response) => {
+        setRecipe(response.data); // Use response.data to access the data
         setIsLoading(false);
       })
       .catch((error) => console.error(error));
   }, [id]);
-
   return (
     <>
       {isLoading ? (

@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import { get } from "../util/ApiUtil";
+//import { get } from "../util/ApiUtil";
 import CustomCard from "../components/CustomCard";
+import request from "../util/Api";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    get("/book/all")
-      .then((data) => {
-        setRecipes(data.content);
+    request
+      .get("/book/all")
+      .then((response) => {
+        setRecipes(response.data.content);
         setIsLoading(false);
       })
       .catch((error) => console.error(error));
