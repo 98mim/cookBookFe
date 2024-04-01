@@ -1,7 +1,8 @@
-import { Avatar, Button, Navbar, Dropdown } from "flowbite-react";
+import { Avatar, Navbar, Dropdown } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { useEffect, useState } from "react";
+import CustomButton from "./CustomButton";
 
 const CustomNavbar = () => {
   const navigate = useNavigate();
@@ -12,6 +13,7 @@ const CustomNavbar = () => {
     setIsLoggedIn(!!user);
   }, [user]);
   const handleLoginButtonClick = () => {
+    console.log("click");
     navigate("/login");
   };
   return (
@@ -51,7 +53,7 @@ const CustomNavbar = () => {
         </div>
       ) : (
         <div className="flex md:order-2">
-          <Button onClick={handleLoginButtonClick}>Login</Button>
+          <CustomButton onClick={handleLoginButtonClick} text={"Login"} />
           <Navbar.Toggle />
         </div>
       )}

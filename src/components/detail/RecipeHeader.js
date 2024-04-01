@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
-import { HiFire, HiOutlineClock } from "react-icons/hi";
+import { HiOutlineClock } from "react-icons/hi";
+import { GiCook, GiCookingGlove, GiCookingPot } from "react-icons/gi";
 
 const RecipeHeader = ({ detail }) => {
   return (
-    <div className="w-full flex flex-col items-center">
+    <div className="w-full flex flex-col items-center text-center">
       <h1 className="flex items-center text-9xl m-4 mt-6 font-blackline">
         {detail.name}
       </h1>
@@ -27,7 +28,7 @@ const RecipeHeader = ({ detail }) => {
         <div className="flex flex-row items-center">
           <div className="flex flex-col items-center">
             <div>
-              <HiFire size={24} />
+              <GiCook size={24} />
             </div>
             <div className="text-md sm:text-lg">Prep Time</div>
           </div>
@@ -40,7 +41,7 @@ const RecipeHeader = ({ detail }) => {
           <div className="flex flex-row items-center">
             <div className="flex flex-col items-center">
               <div>
-                <HiFire size={24} />
+                <GiCookingGlove size={24} />
               </div>
               <div className="text-md sm:text-lg">Bake Time</div>
             </div>
@@ -54,7 +55,7 @@ const RecipeHeader = ({ detail }) => {
           <div className="flex flex-row items-center">
             <div className="flex flex-col items-center">
               <div>
-                <HiFire size={24} />
+                <GiCookingPot size={24} />
               </div>
               <div className="text-md sm:text-lg">Cook Time</div>
             </div>

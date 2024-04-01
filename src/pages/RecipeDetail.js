@@ -27,14 +27,14 @@ function RecipeDetail() {
         <div className="flex flex-col items-center">
           {recipe && <RecipeHeader detail={recipe}></RecipeHeader>}
           <div className="flex md:flex-row flex-col xl:w-3/4 w-full">
-            <div className="flex w-full md:w-1/2 lg:w-1/4">
+            <div className="flex w-full md:w-1/2 lg:w-1/4 bg-purple-50 m-1 py-2 rounded-lg shadow-purple-300 shadow-xl">
               {recipe && recipe.ingredients ? (
                 <Ingredients ingredients={recipe.ingredients}></Ingredients>
               ) : (
                 <div>No ingredients found for this recipe</div>
               )}
             </div>
-            <div className="flex sm:w-full md:w-1/2 lg:w-3/4">
+            <div className="flex sm:w-full md:w-1/2 lg:w-3/4 bg-purple-50 m-1 pl-2 py-2 rounded-lg shadow-purple-300 shadow-xl">
               <Method method={recipe.methods}> </Method>
             </div>
           </div>

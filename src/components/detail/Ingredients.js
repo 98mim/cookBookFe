@@ -4,7 +4,7 @@ import { List } from "flowbite-react";
 
 const Ingredients = ({ ingredients }) => {
   const setWeightUnit = (weightUnit) => {
-    let shortcut;
+    let shortcut = weightUnit;
     switch (weightUnit) {
       case "KILOGRAMS":
         shortcut = "kg";
@@ -37,7 +37,7 @@ const Ingredients = ({ ingredients }) => {
 };
 
 Ingredients.propTypes = {
-  ingredients: PropTypes.arrayOf.isRequired,
+  ingredients: PropTypes.array.isRequired,
 };
 
 export default Ingredients;

@@ -30,7 +30,7 @@ function RegistrationPage() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (formData.password !== formData.passwordRepeat) {
-      setPasswordError(true); // Set password error to true
+      setPasswordError(true);
       return;
     }
     setPasswordError(false);
@@ -52,7 +52,7 @@ function RegistrationPage() {
     } catch (error) {
       toast.update(toastId.current, {
         ...toastOptions,
-        render: "Something happened wrong",
+        render: "Something went wrong",
         type: "error",
       });
       console.error(error);

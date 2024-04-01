@@ -5,10 +5,11 @@ import CustomNavbar from "./components/CustomNavbar";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { UserProvider } from "./context/UserContext";
+import RecipeAdd from "./pages/RecipeAdd";
 
 function App() {
   return (
-    <div className="bg-indigo-300 h-screen">
+    <div className="bg-indigo-300 min-h-screen">
       <UserProvider>
         <BrowserRouter>
           <CustomNavbar />
@@ -26,6 +27,7 @@ function AppRoutes() {
       <Route path={"/login"} element={<Login />} />
       <Route path={"/register"} element={<Register />} />
       <Route path={"/recipe/:id"} element={<RecipeDetail />} />
+      <Route path={"/recipe/add"} element={<RecipeAdd />} />
     </Routes>
   );
 }
