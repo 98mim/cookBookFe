@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import PropTypes from "prop-types";
 import IngredientMapper from "./IngredientMapper";
 import CustomButton from "../CustomButton";
+import { useTranslation } from "react-i18next";
 
 const reducer = (ingredients, action) => {
   switch (action.type) {
@@ -16,6 +17,7 @@ const reducer = (ingredients, action) => {
 
 const IngredientForm = ({ foodData, handleDataChange, ingredientsData }) => {
   const [ingredients, dispatch] = useReducer(reducer, ingredientsData);
+  const { t } = useTranslation();
 
   const handleButtonClick = () => {
     dispatch({
@@ -46,7 +48,9 @@ const IngredientForm = ({ foodData, handleDataChange, ingredientsData }) => {
 
   return (
     <div className="flex flex-col w-full">
-      <h2 className="font-gistesy text-7xl m-2 ml-5">Ingredients</h2>
+      <h2 className="font-gistesy text-7xl m-2 ml-5">
+        {t("Recipe.ingredients")}
+      </h2>
 
       <IngredientMapper
         ingredients={ingredients}
@@ -55,7 +59,7 @@ const IngredientForm = ({ foodData, handleDataChange, ingredientsData }) => {
         foodData={foodData}
       />
       <CustomButton
-        text={"Add Ingredient"}
+        text={t("Button.addIngredient")}
         className={"flex flex-wrap m-5 max-w-fit"}
         onClick={handleButtonClick}
       />

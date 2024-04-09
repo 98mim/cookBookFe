@@ -4,6 +4,7 @@ import { Button } from "flowbite-react";
 import { HiOutlineTrash } from "react-icons/hi";
 import React from "react";
 import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
 
 const IngredientMapper = ({
   ingredients,
@@ -11,6 +12,8 @@ const IngredientMapper = ({
   handleChange,
   handleDelete,
 }) => {
+  const { t } = useTranslation();
+
   return ingredients.map((ingredient, i) => (
     <div
       key={"i" + i.toString()}
@@ -19,25 +22,26 @@ const IngredientMapper = ({
       <div className={"w-2/6 flex justify-center "}>
         <CustomDropdown
           data={foodData}
-          label={ingredient?.food?.name || "Pick new ingredient"}
+          label={ingredient?.food?.name || t("Recipe.pickNewIngredient")}
           onDataChange={(name, value) => handleChange(i, name, value)}
           fieldName="food"
         />
       </div>
       <div className={"w-1/6"}>
         <CustomTextInput
-          fieldName="weight"
-          label="Weight"
+          fieldName={"weight"}
+          label={t("Recipe.weight")}
           isRequired={true}
           onDataChange={(name, value) => handleChange(i, name, value)}
-          type="number"
+          type={"number"}
           data={ingredient?.weight || 0}
         />
       </div>
       <div className={"w-2/6"}>
         <CustomTextInput
-          fieldName="weightUnit"
-          label="Choose weight type"
+          fieldName={"weightUnit"}
+          label={t("Recipe.weightUnit")}
+          placeholder={t("Recipe.chooseWeightType")}
           isRequired={true}
           onDataChange={(name, value) => handleChange(i, name, value)}
           data={ingredient.weightUnit || ""}

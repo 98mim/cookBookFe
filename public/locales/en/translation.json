@@ -1,0 +1,37 @@
+{
+  "Home": {
+    "welcomePart1": "Welcome to",
+    "welcomePart2":"Be Your Chef"
+  },
+  "Language": {
+    "sk": "Slovak",
+    "en": "English"
+  },
+  "Time": {
+    "overall": "Overall Time",
+    "prep": "Prep Time",
+    "bake": "Bake Time",
+    "cook": "Cook Time"
+  },
+  "Button": {
+    "addMethod": "Add Method",
+    "addIngredient": "Add Ingredient",
+    "submit": "Submit",
+    "login": "Login",
+    "acceptThumbnail": "",
+
+  },
+  "Recipe": {
+    "addingNewRecipe": "Adding new recipe",
+    "ingredients": "Ingredients",
+    "method": "Method",
+    "name": "Name",
+    "pickNewIngredient": "Pick New Ingredient",
+    "weight": "Weight",
+    "weightUnit": "Weight Unit",
+    "methodDescription": "Method Description",
+    "chooseWeightType": "Choose Weight Type",
+    "clickToUpload": "Click to upload",
+    "orDragAndDrop": "or drag and drop"
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "Home": {
+    "welcomePart1": "Vitajte na",
+    "welcomePart2":"Buď Tvoj Kuchár"
+  },
+  "Language": {
+    "sk": "Slovenčina",
+    "en": "Angličtina"
+  },
+  "Time": {
+    "overall": "Celkový Čas",
+    "prep": "Čas Prípravy",
+    "bake": "Čas Pečenia",
+    "cook": "Čas Varenia"
+  },
+  "Button": {
+    "addMethod": "Pridaj postup",
+    "addIngredient": "Pridaj ingredienciu",
+    "submit": "Uložiť",
+    "login": "Prihlásiť sa"
+  },
+  "Recipe": {
+    "addingNewRecipe": "Pridávanie nového receptu",
+    "ingredients": "Ingrediencie",
+    "method": "Postup",
+    "name": "Názov",
+    "pickNewIngredient": "Vyber novú ingredienciu",
+    "weight": "Váha",
+    "weightUnit": "Gramáž",
+    "methodDescription": "Popis postupu",
+    "chooseWeightType": "Vyber typ gramáže",
+    "clickToUpload": "Klikni a nahraj",
+    "orDragAndDrop": "alebo prenes"
+  }
+}

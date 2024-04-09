@@ -2,9 +2,11 @@ import { BiCloudUpload } from "react-icons/bi";
 import PropTypes from "prop-types";
 import { v4 as uuid } from "uuid";
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 
 const CustomFileInput = ({ defaultValue, onSelect, accept }) => {
   const uniqueId = uuid();
+  const { t } = useTranslation();
   const [image, setImage] = useState(defaultValue ? defaultValue : null);
   const handleDragOver = (event) => {
     event.preventDefault();
@@ -50,8 +52,8 @@ const CustomFileInput = ({ defaultValue, onSelect, accept }) => {
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <BiCloudUpload color={"gray"} size={32} />
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-              <span className="font-semibold">Click to upload</span> or drag and
-              drop
+              <span className="font-semibold">{t("Recipe.clickToUpload")}</span>{" "}
+              {t("Recipe.orDragAndDrop")}
             </p>
           </div>
         )}

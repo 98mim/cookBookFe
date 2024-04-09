@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import CustomTextArea from "./CustomTextArea";
 import CustomTimelineItem from "../CustomTimelineItem";
 import CustomButton from "../CustomButton";
+import { useTranslation } from "react-i18next";
 
 const reducer = (methods, action) => {
   switch (action.type) {
@@ -17,6 +18,7 @@ const reducer = (methods, action) => {
 };
 
 const MethodForm = ({ methodData, handleDataChange }) => {
+  const { t } = useTranslation();
   const [methods, dispatch] = useReducer(
     reducer,
     methodData.sort((a, b) => a.order - b.order),
@@ -33,7 +35,6 @@ const MethodForm = ({ methodData, handleDataChange }) => {
   };
 
   const handleChange = (index, value) => {
-    console.log(value);
     const updatedMethods = [...methods];
     updatedMethods[index].body = value;
     dispatch({
@@ -45,7 +46,7 @@ const MethodForm = ({ methodData, handleDataChange }) => {
 
   return (
     <div className={"flex flex-col w-full"}>
-      <h2 className="font-gistesy text-7xl m-2 ml-5">Method</h2>
+      <h2 className="font-gistesy text-7xl m-2 ml-5">{t("Recipe.method")}</h2>
       <Timeline className="m-4">
         {methods.map((method, index) => (
           <div key={"m" + index.toString()} className={"mx-5"}>
@@ -55,7 +56,7 @@ const MethodForm = ({ methodData, handleDataChange }) => {
                   fieldName="body"
                   defaultValue={method.body}
                   onDataChange={(name, value) => handleChange(index, value)}
-                  placeholder={"Method description"}
+                  placeholder={t("Recipe.methodDescription")}
                 />
               }
               index={(index + 1).toString()}
@@ -64,7 +65,7 @@ const MethodForm = ({ methodData, handleDataChange }) => {
         ))}
       </Timeline>
       <CustomButton
-        text={"Add Method"}
+        text={t("Button.addMethod")}
         className={"flex flex-wrap m-5 max-w-fit"}
         onClick={handleButtonClick}
       />

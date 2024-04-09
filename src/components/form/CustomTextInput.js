@@ -7,6 +7,7 @@ const CustomTextInput = ({
   type = "text",
   size = "md",
   label,
+  placeholder,
   isRequired,
   onDataChange,
   data,
@@ -17,6 +18,7 @@ const CustomTextInput = ({
     setInputValue(value);
     onDataChange(name, value);
   };
+  console.log(placeholder != null ? placeholder : label);
 
   return (
     <div key={fieldName}>
@@ -28,7 +30,7 @@ const CustomTextInput = ({
           id={fieldName}
           name={fieldName}
           type={type}
-          placeholder={label}
+          placeholder={placeholder != null ? placeholder : label}
           sizing={size}
           value={inputValue}
           onChange={handleInputChange}
@@ -41,7 +43,7 @@ const CustomTextInput = ({
           id={fieldName}
           name={fieldName}
           type={type}
-          placeholder={label}
+          placeholder={placeholder != null ? placeholder : label}
           sizing={size}
           value={inputValue}
           onChange={handleInputChange}
@@ -60,6 +62,7 @@ CustomTextInput.propTypes = {
   isRequired: PropTypes.bool,
   onDataChange: PropTypes.func,
   data: PropTypes.string,
+  placeholder: PropTypes.string,
 };
 
 export default CustomTextInput;

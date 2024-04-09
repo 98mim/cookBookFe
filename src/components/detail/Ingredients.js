@@ -1,8 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { List } from "flowbite-react";
+import { useTranslation } from "react-i18next";
 
 const Ingredients = ({ ingredients }) => {
+  const { t } = useTranslation();
+
   const setWeightUnit = (weightUnit) => {
     let shortcut = weightUnit;
     switch (weightUnit) {
@@ -18,7 +21,7 @@ const Ingredients = ({ ingredients }) => {
   return (
     <>
       <div className="w-full">
-        <h2 className="font-gistesy text-7xl m-2">Ingredients</h2>
+        <h2 className="font-gistesy text-7xl m-2">{t("Recipe.ingredients")}</h2>
         <List unstyled>
           {ingredients.map((ingredient, index) => (
             <List.Item key={index}>

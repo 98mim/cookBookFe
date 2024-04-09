@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
 import { useEffect, useState } from "react";
 import CustomButton from "./CustomButton";
+import CustomLanguageDropdown from "./CustomLanguageDropdown";
 
 const CustomNavbar = () => {
   const navigate = useNavigate();
@@ -26,6 +27,7 @@ const CustomNavbar = () => {
       </Navbar.Brand>
       {isLoggedIn ? (
         <div className="flex md:order-2">
+          <CustomLanguageDropdown />
           <Dropdown
             arrowIcon={false}
             inline
@@ -53,6 +55,7 @@ const CustomNavbar = () => {
         </div>
       ) : (
         <div className="flex md:order-2">
+          <CustomLanguageDropdown />
           <CustomButton onClick={handleLoginButtonClick} text={"Login"} />
           <Navbar.Toggle />
         </div>
