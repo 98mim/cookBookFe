@@ -3,6 +3,11 @@
     "welcomePart1": "Welcome to",
     "welcomePart2":"Be Your Chef"
   },
+  "Navbar": {
+    "dashboard": "Dashboard",
+    "addNewRecipe": "Add New Recipe",
+    "logout": "Sign out"
+  },
   "Language": {
     "sk": "Slovak",
     "en": "English"
@@ -18,8 +23,8 @@
     "addIngredient": "Add Ingredient",
     "submit": "Submit",
     "login": "Login",
-    "acceptThumbnail": "",
-
+    "acceptThumbnail": "Accept Thumbnail",
+    "denyThumbnail": "Deny Thumbnail"
   },
   "Recipe": {
     "addingNewRecipe": "Adding new recipe",

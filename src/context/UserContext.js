@@ -10,8 +10,8 @@ export function useUser() {
 // eslint-disable-next-line react/prop-types
 export function UserProvider({ children }) {
   const [user, setUser] = useState(localStorage.getItem("access_token"));
-
-  useEffect(() => {
+  //todo update to refresh token when not valid
+  /* useEffect(() => {
     const storedUser = localStorage.getItem("refresh_token");
     if (storedUser) {
       api.get("/auth/refresh-token").then((response) => {
@@ -23,10 +23,10 @@ export function UserProvider({ children }) {
         }
       });
     }
-  }, []);
+  }, []);*/
   const login = (data) => {
     try {
-      console.log(data);
+      setUser(data.access_token);
       localStorage.setItem("access_token", data.access_token);
       localStorage.setItem("refresh_token", data.refresh_token);
     } catch (error) {

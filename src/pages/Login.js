@@ -40,7 +40,7 @@ function Login() {
         type: "success",
       });
       login(response.data);
-      navigate("/home");
+      navigate("/dashboard");
     } catch (error) {
       toast.update(toastId.current, {
         ...toastOptions,

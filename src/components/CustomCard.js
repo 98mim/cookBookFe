@@ -1,26 +1,39 @@
-// CustomCard.js
 import { Card } from "flowbite-react";
 import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom";
-import { HiOutlineClock } from "react-icons/hi";
+import { HiClock, HiPencil } from "react-icons/hi";
 import { GiCook, GiCookingGlove, GiCookingPot } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 
-const CustomCard = ({ recipe }) => {
+const CustomCard = ({ recipe, update }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const handleCardClick = () => {
+  const handleCardClick = (event) => {
+    event.stopPropagation();
     navigate(`/recipe/${recipe.id}`);
+  };
+
+  const handleRecipeUpdate = (event) => {
+    event.stopPropagation();
+    navigate(`/recipe/update/${recipe.id}`);
   };
 
   return (
     <Card
-      className="w-full p-2 flex " // Adjust the width for different screen sizes
+      className="relative w-full p-2 flex " // Adjust the width for different screen sizes
       imgAlt="recipes photo"
       imgSrc={`http://localhost:8080/image/${recipe.imagePath}`}
       onClick={handleCardClick}
     >
+      {update && (
+        <HiPencil
+          size={24}
+          className="absolute top-2 right-2 p-1 bg-white rounded-full shadow-lg cursor-pointer"
+          onClick={handleRecipeUpdate}
+        />
+      )}
+
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {recipe.name}
       </h5>
@@ -28,7 +41,7 @@ const CustomCard = ({ recipe }) => {
         <div className="flex flex-row items-center justify-center">
           <div className="flex flex-col items-center justify-center">
             <div>
-              <HiOutlineClock size={24} />
+              <HiClock size={24} />
             </div>
             <div className="text-md sm:text-lg text-center">
               {t("Time.overall")}
@@ -89,6 +102,7 @@ const CustomCard = ({ recipe }) => {
 
 CustomCard.propTypes = {
   recipe: PropTypes.object,
+  update: PropTypes.bool,
 };
 
 export default CustomCard;

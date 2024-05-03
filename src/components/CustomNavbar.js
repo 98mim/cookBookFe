@@ -1,22 +1,63 @@
-import { Avatar, Navbar, Dropdown } from "flowbite-react";
+import { Navbar, Dropdown } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserContext";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CustomButton from "./CustomButton";
 import CustomLanguageDropdown from "./CustomLanguageDropdown";
+import request from "../util/Api";
+import { toast } from "react-toastify";
+import { toastOptions } from "./ToastOptions";
+import { useTranslation } from "react-i18next";
 
 const CustomNavbar = () => {
   const navigate = useNavigate();
-  const { user } = useUser();
+  const { user, logout } = useUser();
   const [isLoggedIn, setIsLoggedIn] = useState(!!user);
+  const [userData, setUserData] = useState([]);
+  const toastId = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     setIsLoggedIn(!!user);
   }, [user]);
+  useEffect(() => {
+    if (isLoggedIn) {
+      request
+        .get("/profile/me")
+        .then((response) => {
+          setUserData(response.data);
+        })
+        .catch((error) => console.error(error));
+    }
+  }, [user]);
+
   const handleLoginButtonClick = () => {
-    console.log("click");
     navigate("/login");
   };
+
+  const handleLogout = async () => {
+    toastId.current = toast("Loading...", {
+      ...toastOptions,
+      autoClose: false,
+    });
+    try {
+      logout();
+      toast.update(toastId.current, {
+        ...toastOptions,
+        render: "Submit successfully",
+        type: "success",
+      });
+      navigate("/");
+    } catch (error) {
+      toast.update(toastId.current, {
+        ...toastOptions,
+        render: "Something happened wrong",
+        type: "error",
+      });
+      console.error(error);
+    }
+  };
+
   return (
     <Navbar fluid rounded>
       <Navbar.Brand href="/">
@@ -29,27 +70,31 @@ const CustomNavbar = () => {
         <div className="flex md:order-2">
           <CustomLanguageDropdown />
           <Dropdown
+            pill
+            outline
+            gradientDuoTone="purpleToPink"
             arrowIcon={false}
-            inline
             label={
-              <Avatar
-                alt="User settings"
-                img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                rounded
-              />
+              <div className={"flex items-center justify-center"}>
+                {userData?.name?.charAt(0).toUpperCase()}
+              </div>
             }
           >
             <Dropdown.Header>
-              <span className="block text-sm">Bonnie Green</span>
               <span className="block truncate text-sm font-medium">
-                name@flowbite.com
+                {userData.name}
               </span>
             </Dropdown.Header>
-            <Dropdown.Item>Dashboard</Dropdown.Item>
-            <Dropdown.Item>Settings</Dropdown.Item>
-            <Dropdown.Item>Earnings</Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/dashboard")}>
+              {t("Navbar.dashboard")}
+            </Dropdown.Item>
+            <Dropdown.Item onClick={() => navigate("/recipe/add")}>
+              {t("Navbar.addNewRecipe")}
+            </Dropdown.Item>
             <Dropdown.Divider />
-            <Dropdown.Item>Sign out</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>
+              {t("Navbar.logout")}
+            </Dropdown.Item>
           </Dropdown>
           <Navbar.Toggle />
         </div>

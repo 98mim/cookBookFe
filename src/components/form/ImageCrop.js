@@ -4,6 +4,7 @@ import "cropperjs/dist/cropper.css";
 import PropTypes from "prop-types";
 import CustomFileInput from "./CustomFileInput";
 import CustomButton from "../CustomButton";
+import { useTranslation } from "react-i18next";
 
 // eslint-disable-next-line no-unused-vars
 const ImageCrop = ({ defaultValue = null, name, onSelect }) => {
@@ -11,6 +12,7 @@ const ImageCrop = ({ defaultValue = null, name, onSelect }) => {
   const [croppedImage, setCroppedImage] = useState(defaultValue);
   const [acceptCroppedImage, setAcceptCroppedImage] = useState(!!defaultValue);
   const cropperRef = useRef(null);
+  const { t } = useTranslation();
 
   const handleFileSelect = (fileName, file) => {
     setImage(file);
@@ -60,7 +62,7 @@ const ImageCrop = ({ defaultValue = null, name, onSelect }) => {
                 setAcceptCroppedImage(!acceptCroppedImage);
                 onSelect(name, croppedImage.split(",")[1]);
               }}
-              text={"Accept Thumbnail"}
+              text={t("Button.acceptThumbnail")}
             />
           )}
           {acceptCroppedImage && (
@@ -72,7 +74,7 @@ const ImageCrop = ({ defaultValue = null, name, onSelect }) => {
                 onSelect(name, null);
                 onSelect("thumbnail_link", null);
               }}
-              text={"Deny Thumbnail"}
+              text={t("Button.denyThumbnail")}
             />
           )}
         </div>

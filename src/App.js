@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { UserProvider } from "./context/UserContext";
 import RecipeAdd from "./pages/RecipeAdd";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function AppRoutes() {
       <Route path={"/register"} element={<Register />} />
       <Route path={"/recipe/:id"} element={<RecipeDetail />} />
       <Route path={"/recipe/add"} element={<RecipeAdd />} />
+      <Route path={"/dashboard"} element={<Dashboard />} />
+      <Route path={"/recipe/update/:id"} element={<RecipeAdd />} />
     </Routes>
   );
 }

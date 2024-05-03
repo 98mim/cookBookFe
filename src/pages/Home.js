@@ -27,10 +27,10 @@ function Home() {
         <div className="px-2">
           <div className="flex flex-col items-center">
             <img src="/logo_pozdlzne.jpeg" className="mr-3 h-20" alt="Logo" />
-            <h2 className="font-gistesy text-7xl p-2">
+            <h2 className="font-blackline text-7xl p-2">
               {t("Home.welcomePart1")}
             </h2>
-            <h1 className="font-gistesy text-9xl p-10">
+            <h1 className="font-blackline text-9xl p-10">
               {t("Home.welcomePart2")}
             </h1>
           </div>

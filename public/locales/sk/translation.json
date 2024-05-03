@@ -3,6 +3,11 @@
     "welcomePart1": "Vitajte na",
     "welcomePart2":"Buď Tvoj Kuchár"
   },
+  "Navbar": {
+    "dashboard": "Profil",
+    "addNewRecipe": "Pridaj nový recept",
+    "logout": "Odhlásiť sa"
+  },
   "Language": {
     "sk": "Slovenčina",
     "en": "Angličtina"
@@ -17,7 +22,9 @@
     "addMethod": "Pridaj postup",
     "addIngredient": "Pridaj ingredienciu",
     "submit": "Uložiť",
-    "login": "Prihlásiť sa"
+    "login": "Prihlásiť sa",
+    "acceptThumbnail": "Prijať náhľadový obrázok",
+    "denyThumbnail": "Zrušiť náhľadový obrázok"
   },
   "Recipe": {
     "addingNewRecipe": "Pridávanie nového receptu",

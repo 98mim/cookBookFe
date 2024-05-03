@@ -66,7 +66,6 @@ function RecipeAdd() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("submit");
 
     toastId.current = toast("Loading...", {
       ...toastOptions,
