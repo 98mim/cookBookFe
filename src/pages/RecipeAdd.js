@@ -11,6 +11,8 @@ import CustomButton from "../components/CustomButton";
 import { HiOutlineClock } from "react-icons/hi";
 import { GiCook, GiCookingGlove, GiCookingPot } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
+import CustomDifficultySelector from "../components/form/CustomDifficultySelector";
+import CustomCourseSelector from "../components/form/CustomCourseSelector";
 
 function RecipeAdd() {
   const navigate = useNavigate();
@@ -23,6 +25,8 @@ function RecipeAdd() {
     overallTime: 0,
     cookTime: 0,
     bakeTime: 0,
+    difficulty: "MEDIUM",
+    courseType: "BREAKFAST",
     ingredients: [
       {
         weight: 0,
@@ -61,6 +65,7 @@ function RecipeAdd() {
   }, [formData.cookTime, formData.bakeTime, formData.prepTime]);
 
   const handleDataChange = (name, value) => {
+    console.log(name + ": " + value);
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
@@ -171,7 +176,6 @@ function RecipeAdd() {
                       min
                     </div>
                   </div>
-
                   <div className="flex flex-row items-center text-center">
                     <div className="flex flex-col items-center">
                       <div>
@@ -189,6 +193,28 @@ function RecipeAdd() {
                       min
                     </div>
                   </div>
+                </div>
+              </div>
+              <div className="flex lg:flex-row flex-col w-full">
+                <div
+                  className={
+                    "flex w-full lg:w-1/2 bg-purple-50 m-1 py-2 rounded-lg shadow-purple-300 shadow-xl"
+                  }
+                >
+                  <CustomDifficultySelector
+                    onDataChange={handleDataChange}
+                    data={formData.difficulty}
+                  />
+                </div>
+                <div
+                  className={
+                    "flex w-full lg:w-1/2 bg-purple-50 m-1 py-2 rounded-lg shadow-purple-300 shadow-xl"
+                  }
+                >
+                  <CustomCourseSelector
+                    onDataChange={handleDataChange}
+                    data={formData.courseType}
+                  />
                 </div>
               </div>
               <div className="flex lg:flex-row flex-col w-full">

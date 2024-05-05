@@ -37,6 +37,25 @@
     "methodDescription": "Popis postupu",
     "chooseWeightType": "Vyber typ gramáže",
     "clickToUpload": "Klikni a nahraj",
-    "orDragAndDrop": "alebo prenes"
+    "orDragAndDrop": "alebo prenes",
+    "chooseDifficulty": "Vyberte náročnosť",
+    "difficulty": "Náročnosť"
+  },
+  "Difficulty":{
+    "VERY_EASY": "Veľmi Ľahké",
+    "EASY": "Ľahké",
+    "MEDIUM": "Stredne",
+    "DIFFICULT": "Náročné",
+    "VERY_DIFFICULT": "Veľmi Náročné"
+  },
+  "CourseType": {
+    "BREAKFAST": "Raňajky",
+    "SOUP":  "Polievka",
+    "MAIN_DISH":  "Hlavné Jedlo",
+    "SWEET":  "Sladké",
+    "SALTY":  "Slané",
+    "SALAD": "Šalát",
+    "SIDE_DISH": "Príloha",
+    "BAKERY": "Pečivo"
   }
 }

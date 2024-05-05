@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-unused-vars
 import React, { createContext, useContext, useEffect, useState } from "react";
+// eslint-disable-next-line no-unused-vars
 import api from "../util/Api";
 
 const UserContext = createContext(null);

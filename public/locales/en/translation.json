@@ -37,6 +37,25 @@
     "methodDescription": "Method Description",
     "chooseWeightType": "Choose Weight Type",
     "clickToUpload": "Click to upload",
-    "orDragAndDrop": "or drag and drop"
+    "orDragAndDrop": "or drag and drop",
+    "chooseDifficulty": "Choose Difficulty",
+    "difficulty": "Difficulty"
+  },
+  "Difficulty": {
+    "VERY_EASY": "Very Easy",
+    "EASY": "Easy",
+    "MEDIUM": "Medium",
+    "DIFFICULT": "Hard",
+    "VERY_DIFFICULT": "Very Hard"
+  },
+  "CourseType": {
+    "BREAKFAST": "Breakfast",
+    "SOUP":  "Soup",
+    "MAIN_DISH":  "Main Dish",
+    "SWEET":  "Sweet",
+    "SALTY":  "Salty",
+    "SALAD": "Salad",
+    "SIDE_DISH": "Side Dish",
+    "BAKERY": "Bakery"
   }
 }

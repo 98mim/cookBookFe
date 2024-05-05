@@ -18,12 +18,12 @@ const CustomTextInput = ({
     setInputValue(value);
     onDataChange(name, value);
   };
-  console.log(placeholder != null ? placeholder : label);
 
   return (
     <div key={fieldName}>
       <div className="mb-2 block">
-        <Label value={label}> {isRequired && "*"}</Label>
+        <Label value={label}> </Label>
+        {isRequired && <span className="ml-1 text-red-500">*</span>}
       </div>
       {type == "number" && (
         <TextInput
