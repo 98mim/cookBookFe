@@ -106,13 +106,24 @@ const CustomNavbar = () => {
         </div>
       )}
       <Navbar.Collapse>
-        <Navbar.Link href="#" active>
-          Home
+        <Navbar.Link onClick={() => navigate("/")} active>
+          {t("Home.home")}
         </Navbar.Link>
-        <Navbar.Link href="#">About</Navbar.Link>
-        <Navbar.Link href="#">Services</Navbar.Link>
-        <Navbar.Link href="#">Pricing</Navbar.Link>
-        <Navbar.Link href="#">Contact</Navbar.Link>
+        <Navbar.Link onClick={() => navigate("/recipe/course_type/MAIN_DISH")}>
+          {t("CourseType.MAIN_DISH")}
+        </Navbar.Link>
+        <Navbar.Link onClick={() => navigate("/recipe/course_type/SOUP")}>
+          {" "}
+          {t("CourseType.SOUP")}
+        </Navbar.Link>
+        <Navbar.Link onClick={() => navigate("/recipe/course_type/SWEET")}>
+          {" "}
+          {t("CourseType.SWEET")}
+        </Navbar.Link>
+        <Navbar.Link onClick={() => navigate("/recipe/course_type/SALTY")}>
+          {" "}
+          {t("CourseType.SALTY")}
+        </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
   );

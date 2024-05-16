@@ -1,7 +1,8 @@
 {
   "Home": {
+    "home": "Domov",
     "welcomePart1": "Vitajte na",
-    "welcomePart2":"Buď Tvoj Kuchár"
+    "welcomePart2":"Buď Svoj Kuchár"
   },
   "Navbar": {
     "dashboard": "Profil",

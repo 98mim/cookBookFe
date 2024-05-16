@@ -7,6 +7,7 @@ import Register from "./pages/Register";
 import { UserProvider } from "./context/UserContext";
 import RecipeAdd from "./pages/RecipeAdd";
 import Dashboard from "./pages/Dashboard";
+import RecipesCourseType from "./pages/RecipesCourseType";
 
 function App() {
   return (
@@ -31,6 +32,10 @@ function AppRoutes() {
       <Route path={"/recipe/add"} element={<RecipeAdd />} />
       <Route path={"/dashboard"} element={<Dashboard />} />
       <Route path={"/recipe/update/:id"} element={<RecipeAdd />} />
+      <Route
+        path={"/recipe/course_type/:type"}
+        element={<RecipesCourseType />}
+      />
     </Routes>
   );
 }
