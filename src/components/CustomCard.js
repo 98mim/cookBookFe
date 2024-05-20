@@ -37,64 +37,70 @@ const CustomCard = ({ recipe, update }) => {
       <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
         {recipe.name}
       </h5>
-      <div className="flex justify-between w-full items-center">
-        <div className="flex flex-row items-center justify-center">
-          <div className="flex flex-col items-center justify-center">
-            <div>
-              <HiClock size={24} />
-            </div>
-            <div className="text-md sm:text-lg text-center">
-              {t("Time.overall")}
-            </div>
-          </div>
-          <div className="text-2xl md:text-3xl m-2">
-            {recipe.overallTime} min
-          </div>
-        </div>
-
-        <div className="flex flex-row items-center">
-          <div className="flex flex-col items-center">
-            <div>
-              <GiCook size={24} />
-            </div>
-            <div className="text-md sm:text-lg text-center">
-              {t("Time.prep")}
-            </div>
-          </div>
-          <div className="text-2xl md:text-3xl m-2">{recipe.prepTime} min</div>
-        </div>
-
-        {recipe.bakeTime > 0 && (
-          <div className="flex flex-row items-center">
-            <div className="flex flex-col items-center">
+      <div className="flex justify-between w-full items-center md:flex-col">
+        <div className={"flex md:flex-row"}>
+          <div className="flex flex-row items-center justify-center">
+            <div className="flex flex-col items-center justify-center">
               <div>
-                <GiCookingGlove size={24} />
+                <HiClock size={24} />
               </div>
               <div className="text-md sm:text-lg text-center">
-                {t("Time.bake")}
+                {t("Time.overall")}
               </div>
             </div>
             <div className="text-2xl md:text-3xl m-2">
-              {recipe.bakeTime} min
+              {recipe.overallTime} min
             </div>
           </div>
-        )}
 
-        {recipe.cookTime > 0 && (
           <div className="flex flex-row items-center">
             <div className="flex flex-col items-center">
               <div>
-                <GiCookingPot size={24} />
+                <GiCook size={24} />
               </div>
               <div className="text-md sm:text-lg text-center">
-                {t("Time.cook")}
+                {t("Time.prep")}
               </div>
             </div>
             <div className="text-2xl md:text-3xl m-2">
-              {recipe.cookTime} min
+              {recipe.prepTime} min
             </div>
           </div>
-        )}
+        </div>
+
+        <div className={"flex md:flex-row"}>
+          {recipe.bakeTime > 0 && (
+            <div className="flex flex-row items-center">
+              <div className="flex flex-col items-center">
+                <div>
+                  <GiCookingGlove size={24} />
+                </div>
+                <div className="text-md sm:text-lg text-center">
+                  {t("Time.bake")}
+                </div>
+              </div>
+              <div className="text-2xl md:text-3xl m-2">
+                {recipe.bakeTime} min
+              </div>
+            </div>
+          )}
+
+          {recipe.cookTime > 0 && (
+            <div className="flex flex-row items-center">
+              <div className="flex flex-col items-center">
+                <div>
+                  <GiCookingPot size={24} />
+                </div>
+                <div className="text-md sm:text-lg text-center">
+                  {t("Time.cook")}
+                </div>
+              </div>
+              <div className="text-2xl md:text-3xl m-2">
+                {recipe.cookTime} min
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </Card>
   );

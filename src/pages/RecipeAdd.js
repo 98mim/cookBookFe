@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import { toastOptions } from "../components/ToastOptions";
 import request from "../util/Api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import IngredientForm from "../components/form/IngredientForm";
 import CustomTextInput from "../components/form/CustomTextInput";
 import MethodForm from "../components/form/MethodForm";
@@ -15,9 +15,11 @@ import CustomDifficultySelector from "../components/form/CustomDifficultySelecto
 import CustomCourseSelector from "../components/form/CustomCourseSelector";
 
 function RecipeAdd() {
+  const { id } = useParams();
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingId, setIsLoadingId] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     image: "",
@@ -64,6 +66,18 @@ function RecipeAdd() {
     }));
   }, [formData.cookTime, formData.bakeTime, formData.prepTime]);
 
+  useEffect(() => {
+    request
+      .get(`/recipe/detail/${id}`)
+      .then((response) => {
+        if (id != null) {
+          setFormData(response.data);
+          console.log(response.data);
+        }
+        setIsLoadingId(false);
+      })
+      .catch((error) => console.error(error));
+  }, [id]);
   const handleDataChange = (name, value) => {
     console.log(name + ": " + value);
     setFormData((prevData) => ({ ...prevData, [name]: value }));
@@ -77,7 +91,12 @@ function RecipeAdd() {
       autoClose: false,
     });
     try {
-      const response = await request.post("/recipe/add", formData);
+      let response = null;
+      if (id == null) {
+        response = await request.post("/recipe/add", formData);
+      } else {
+        response = await request.post(`/recipe/update/${id}`, formData);
+      }
       toast.update(toastId.current, {
         ...toastOptions,
         render: "Submit successfully",
@@ -96,7 +115,7 @@ function RecipeAdd() {
 
   return (
     <>
-      {isLoading ? (
+      {isLoading && isLoadingId ? (
         <div>Loading...</div>
       ) : (
         <div className="flex flex-col items-center xl:m-0 p-2 w-full">
@@ -118,14 +137,22 @@ function RecipeAdd() {
                   label={t("Recipe.name")}
                   isRequired={true}
                   onDataChange={handleDataChange}
-                  data={formData[name]}
+                  data={formData.name}
                 />
-                <Thumbnail
-                  name={"image"}
-                  defaultValue={formData.image}
-                  urlName={"thumbnail_link"}
-                  onSelect={(name, value) => handleDataChange(name, value)}
-                />
+                {formData.imagePath == null && (
+                  <Thumbnail
+                    name={"image"}
+                    defaultValue={formData.image}
+                    urlName={"thumbnail_link"}
+                    onSelect={(name, value) => handleDataChange(name, value)}
+                  />
+                )}
+                {formData.imagePath && (
+                  <img
+                    src={`http://localhost:8080/image/${formData.imagePath}`}
+                    className="w-full lg:w-3/4 max-h-1/2"
+                  />
+                )}
                 <div className="flex justify-between w-full sm:flex-row flex-col">
                   <div className="flex flex-row items-center text-center">
                     <div className="flex flex-col items-center">
