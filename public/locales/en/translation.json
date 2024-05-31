@@ -40,14 +40,16 @@
     "clickToUpload": "Click to upload",
     "orDragAndDrop": "or drag and drop",
     "chooseDifficulty": "Choose Difficulty",
-    "difficulty": "Difficulty"
+    "difficulty": "Difficulty",
+    "courseType": "Course Type"
   },
   "Difficulty": {
     "VERY_EASY": "Very Easy",
     "EASY": "Easy",
     "MEDIUM": "Medium",
     "DIFFICULT": "Hard",
-    "VERY_DIFFICULT": "Very Hard"
+    "VERY_DIFFICULT": "Very Hard",
+    "": ""
   },
   "CourseType": {
     "BREAKFAST": "Breakfast",
@@ -57,6 +59,7 @@
     "SALTY":  "Salty",
     "SALAD": "Salad",
     "SIDE_DISH": "Side Dish",
-    "BAKERY": "Bakery"
+    "BAKERY": "Bakery",
+    "": ""
   }
 }

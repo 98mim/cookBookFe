@@ -3,11 +3,24 @@ import { useEffect, useState } from "react";
 import CustomCard from "../components/CustomCard";
 import request from "../util/Api";
 import { useTranslation } from "react-i18next";
+import CustomFilterBar from "../components/CustomFilterBar";
 
 function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [recipes, setRecipes] = useState([]);
   const { t } = useTranslation();
+  const [filter, setFilter] = useState({
+    ingredients: [],
+    overallTime: 0,
+    name: "",
+    difficulty: null,
+    courseType: null,
+  });
+
+  const handleDataChange = (name, value) => {
+    console.log(name + ": " + value);
+    setFilter((prevData) => ({ ...prevData, [name]: value }));
+  };
 
   useEffect(() => {
     request
@@ -18,6 +31,16 @@ function Home() {
       })
       .catch((error) => console.error(error));
   }, []);
+
+  useEffect(() => {
+    request
+      .post("/book/filter", filter)
+      .then((response) => {
+        setRecipes(response.data.content);
+        setIsLoading(false);
+      })
+      .catch((error) => console.error(error));
+  }, [filter]);
 
   return (
     <div>
@@ -33,6 +56,12 @@ function Home() {
             <h1 className="font-blackline text-9xl p-10">
               {t("Home.welcomePart2")}
             </h1>
+          </div>
+          <div>
+            <CustomFilterBar
+              handleDataChange={handleDataChange}
+              filterData={filter}
+            />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3">
             {recipes.map((recipe) => (

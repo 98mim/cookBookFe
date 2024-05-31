@@ -1,20 +1,12 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
+import { courseTypes } from "../../util/CourseTypes";
 
 const CustomCourseSelector = ({ onDataChange, data }) => {
   const [selectedOption, setSelectedOption] = useState(data);
   const { t } = useTranslation();
-  const options = [
-    "BREAKFAST",
-    "SOUP",
-    "MAIN_DISH",
-    "SWEET",
-    "SALTY",
-    "SALAD",
-    "SIDE_DISH",
-    "BAKERY",
-  ];
+  const options = courseTypes;
 
   const handleChange = (option) => {
     setSelectedOption(option);

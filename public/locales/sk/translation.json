@@ -40,14 +40,16 @@
     "clickToUpload": "Klikni a nahraj",
     "orDragAndDrop": "alebo prenes",
     "chooseDifficulty": "Vyberte náročnosť",
-    "difficulty": "Náročnosť"
+    "difficulty": "Náročnosť",
+    "courseType": "Typ jedla"
   },
   "Difficulty":{
     "VERY_EASY": "Veľmi Ľahké",
     "EASY": "Ľahké",
     "MEDIUM": "Stredne",
     "DIFFICULT": "Náročné",
-    "VERY_DIFFICULT": "Veľmi Náročné"
+    "VERY_DIFFICULT": "Veľmi Náročné",
+    "": ""
   },
   "CourseType": {
     "BREAKFAST": "Raňajky",
@@ -57,6 +59,11 @@
     "SALTY":  "Slané",
     "SALAD": "Šalát",
     "SIDE_DISH": "Príloha",
-    "BAKERY": "Pečivo"
+    "BAKERY": "Pečivo",
+    "": ""
+  },
+  "Filter": {
+    "filter": "Filter",
+    "openButton": "Spresniť filter "
   }
 }

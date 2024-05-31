@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import { Badge, Label } from "flowbite-react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
+import { difficulty } from "../../util/Difficulty";
 
 const CustomDifficultySelector = ({ onDataChange, data = "Medium" }) => {
   const { t } = useTranslation();
-  const difficultyLabels = [
-    "VERY_EASY",
-    "EASY",
-    "MEDIUM",
-    "DIFFICULT",
-    "VERY_DIFFICULT",
-  ];
+  const difficultyLabels = difficulty;
 
   const mapLabelToValue = (label) => {
     return difficultyLabels.indexOf(label); // Get the index of the label

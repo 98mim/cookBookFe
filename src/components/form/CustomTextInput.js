@@ -8,7 +8,7 @@ const CustomTextInput = ({
   size = "md",
   label,
   placeholder,
-  isRequired,
+  isRequired = false,
   onDataChange,
   data,
 }) => {

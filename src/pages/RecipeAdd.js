@@ -79,7 +79,6 @@ function RecipeAdd() {
       .catch((error) => console.error(error));
   }, [id]);
   const handleDataChange = (name, value) => {
-    console.log(name + ": " + value);
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
