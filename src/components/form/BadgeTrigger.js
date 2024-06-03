@@ -9,7 +9,10 @@ const BadgeTrigger = ({ selectedValues, label, handleRemove }) => (
       <Label className={"text-gray-500"}>{label}</Label>
     )}
     {selectedValues.map((value, index) => (
-      <Badge color={value?.is_checked ? "yellow" : "light"} key={index}>
+      <Badge
+        className={"bg-gradient-to-br from-purple-600 to-pink-500 text-white"}
+        key={index}
+      >
         <div className="flex justify-center gap-1 items-center">
           <span>{value}</span>
           <HiX

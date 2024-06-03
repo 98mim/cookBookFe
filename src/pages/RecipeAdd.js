@@ -121,8 +121,9 @@ function RecipeAdd() {
           <div className="flex flex-col xl:w-3/4 w-full p-2 xl:p-0">
             <div className="flex xl:mt-2 items-center justify-center">
               <h1 className="text-9xl m-4 mt-6 font-blackline text-center">
-                {t("Recipe.addingNewRecipe")}
-                {formData.name && ": " + formData.name}
+                {id == null && t("Recipe.addingNewRecipe")}
+                {id == null && formData.name && ": " + formData.name}
+                {id != null && formData.name && formData.name}
               </h1>
             </div>
             <form className="flex flex-col gap-4 m-2" onSubmit={handleSubmit}>

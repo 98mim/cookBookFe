@@ -19,7 +19,7 @@ const IngredientMapper = ({
       key={"i" + i.toString()}
       className="flex flex-row w-full items-center gap-4 mx-5 md:gap-2 pr-10"
     >
-      <div className={"w-2/6 flex justify-center "}>
+      <div className={" w-2/6 flex justify-center items-center"}>
         <CustomDropdown
           data={foodData}
           label={ingredient?.food?.name || t("Recipe.pickNewIngredient")}
@@ -27,7 +27,7 @@ const IngredientMapper = ({
           fieldName="food"
         />
       </div>
-      <div className={"w-1/6"}>
+      <div className={"flex w-1/6 items-center"}>
         <CustomTextInput
           fieldName={"weight"}
           label={t("Recipe.weight")}
@@ -37,7 +37,7 @@ const IngredientMapper = ({
           data={ingredient?.weight || 0}
         />
       </div>
-      <div className={"w-2/6"}>
+      <div className={"flex w-2/6 items-center"}>
         <CustomTextInput
           fieldName={"weightUnit"}
           label={t("Recipe.weightUnit")}
@@ -47,7 +47,7 @@ const IngredientMapper = ({
           data={ingredient.weightUnit || ""}
         />
       </div>
-      <div className={"w-1/6"}>
+      <div className={"flex items-center w-1/6"}>
         <Button
           pill
           outline

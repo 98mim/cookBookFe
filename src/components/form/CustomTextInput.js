@@ -1,6 +1,7 @@
-import { Label, TextInput } from "flowbite-react";
-import React, { useState } from "react";
+import { Label, TextInput, Tooltip } from "flowbite-react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
+import { HiOutlineQuestionMarkCircle } from "react-icons/hi";
 
 const CustomTextInput = ({
   fieldName,
@@ -11,6 +12,7 @@ const CustomTextInput = ({
   isRequired = false,
   onDataChange,
   data,
+  tooltip = null,
 }) => {
   const [inputValue, setInputValue] = useState(data);
   const handleInputChange = (event) => {
@@ -19,11 +21,23 @@ const CustomTextInput = ({
     onDataChange(name, value);
   };
 
+  useEffect(() => {
+    setInputValue(data);
+  }, [data]);
+
   return (
     <div key={fieldName}>
-      <div className="mb-2 block">
+      <div className="mb-2 block flex flex-row mt-1">
         <Label value={label}> </Label>
         {isRequired && <span className="ml-1 text-red-500">*</span>}
+        {tooltip != null && (
+          <Tooltip content={tooltip} className={"ml-1"}>
+            <HiOutlineQuestionMarkCircle
+              className={"text-gray-500 ml-1"}
+              size={20}
+            />
+          </Tooltip>
+        )}
       </div>
       {type == "number" && (
         <TextInput
@@ -63,6 +77,7 @@ CustomTextInput.propTypes = {
   onDataChange: PropTypes.func,
   data: PropTypes.string,
   placeholder: PropTypes.string,
+  tooltip: PropTypes.string,
 };
 
 export default CustomTextInput;

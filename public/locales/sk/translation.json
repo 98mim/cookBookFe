@@ -14,10 +14,10 @@
     "en": "Angličtina"
   },
   "Time": {
-    "overall": "Celkový Čas",
-    "prep": "Čas Prípravy",
-    "bake": "Čas Pečenia",
-    "cook": "Čas Varenia"
+    "overall": "Celkový čas",
+    "prep": "Čas prípravy",
+    "bake": "Čas pečenia",
+    "cook": "Čas varenia"
   },
   "Button": {
     "addMethod": "Pridaj postup",
@@ -44,11 +44,11 @@
     "courseType": "Typ jedla"
   },
   "Difficulty":{
-    "VERY_EASY": "Veľmi Ľahké",
+    "VERY_EASY": "Veľmi ľahké",
     "EASY": "Ľahké",
     "MEDIUM": "Stredne",
     "DIFFICULT": "Náročné",
-    "VERY_DIFFICULT": "Veľmi Náročné",
+    "VERY_DIFFICULT": "Veľmi náročné",
     "": ""
   },
   "CourseType": {
@@ -65,5 +65,8 @@
   "Filter": {
     "filter": "Filter",
     "openButton": "Spresniť filter "
+  },
+  "Tooltips": {
+    "filter": "Zadávajte macximálny čas"
   }
 }

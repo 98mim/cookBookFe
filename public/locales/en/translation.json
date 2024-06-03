@@ -61,5 +61,12 @@
     "SIDE_DISH": "Side Dish",
     "BAKERY": "Bakery",
     "": ""
+  },
+  "Filter": {
+    "filter": "Filter",
+    "openButton": "Specify filter "
+  },
+  "Tooltips": {
+    "filter": "Enter maximal time"
   }
 }

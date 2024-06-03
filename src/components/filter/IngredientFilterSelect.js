@@ -9,9 +9,10 @@ import BadgeTrigger from "../form/BadgeTrigger";
 const IngredientFilterSelect = ({ selectedData, onDataChange }) => {
   const [ingredients, setIngredients] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // eslint-disable-next-line no-unused-vars
   const { t } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [selectedItems, setSelectedItems] = useState(selectedData || []);
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     request
@@ -23,14 +24,15 @@ const IngredientFilterSelect = ({ selectedData, onDataChange }) => {
       .catch((error) => console.error(error));
   }, []);
 
-  const [selectedItems, setSelectedItems] = useState(selectedData || []);
-  const [searchInput, setSearchInput] = useState("");
-
   const handleSearchInputChange = (event) => {
     event.preventDefault();
     const { value } = event.target;
     setSearchInput(value);
   };
+
+  useEffect(() => {
+    setSelectedItems(selectedData);
+  }, [selectedData]);
 
   const filteredOptions = ingredients.filter((option) =>
     option.name.toLowerCase().includes(searchInput.toLowerCase()),

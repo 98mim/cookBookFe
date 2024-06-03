@@ -19,7 +19,7 @@ const CustomCourseSelector = ({ onDataChange, data }) => {
         <div
           key={index}
           onClick={() => handleChange(option)}
-          className={`w-28 h-28 m-2 cursor-pointer hover:cursor-pointer flex items-center justify-center rounded-lg ${selectedOption === option ? "bg-purple-400" : "bg-indigo-100 hover:bg-indigo-400"}`}
+          className={`w-28 h-28 m-2 cursor-pointer hover:cursor-pointer flex items-center justify-center rounded-lg ${selectedOption === option ? "bg-purple-400 text-white" : "bg-indigo-100 hover:bg-indigo-400 hover:text-white"}`}
         >
           {t("CourseType." + option)}
         </div>
