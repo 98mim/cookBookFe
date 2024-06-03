@@ -4,6 +4,7 @@ import RecipeHeader from "../components/detail/RecipeHeader";
 import Ingredients from "../components/detail/Ingredients";
 import Method from "../components/detail/Method";
 import request from "../util/Api";
+import LoadingComponent from "../components/LoadingComponent";
 
 function RecipeDetail() {
   const { id } = useParams();
@@ -22,7 +23,7 @@ function RecipeDetail() {
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <LoadingComponent />
       ) : (
         <div className={"container mx-auto"}>
           <div className="flex flex-col items-center">

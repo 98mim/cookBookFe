@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import request from "../util/Api";
 import CustomCard from "../components/CustomCard";
+import LoadingComponent from "../components/LoadingComponent";
 
 function Dashboard() {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,7 +18,7 @@ function Dashboard() {
   return (
     <div>
       {isLoading ? (
-        <div>Loading...</div>
+        <LoadingComponent />
       ) : (
         <div className={"flex flex-col items-center m-1"}>
           <h1 className={"flex items-center text-9xl m-4 mt-6 font-blackline"}>

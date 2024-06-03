@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import request from "../util/Api";
 import { useParams } from "react-router-dom";
+import LoadingComponent from "../components/LoadingComponent";
 
 function RecipesCourseType() {
   const { type } = useParams();
@@ -23,7 +24,7 @@ function RecipesCourseType() {
   return (
     <div>
       {isLoading ? (
-        <div>Loading...</div>
+        <LoadingComponent />
       ) : (
         <div className="px-2">
           <div className="flex flex-col items-center">

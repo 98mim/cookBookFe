@@ -4,6 +4,7 @@ import request from "../util/Api";
 import { useTranslation } from "react-i18next";
 import CustomFilterBar from "../components/CustomFilterBar";
 import { Pagination } from "flowbite-react";
+import LoadingComponent from "../components/LoadingComponent";
 
 function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -106,7 +107,7 @@ function Home() {
   return (
     <div>
       {isLoading ? (
-        <div>Loading...</div>
+        <LoadingComponent />
       ) : (
         <div className="px-2">
           <div className="flex flex-col items-center">

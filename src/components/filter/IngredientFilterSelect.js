@@ -5,6 +5,7 @@ import request from "../../util/Api";
 import { HiChevronDown, HiOutlineSearch } from "react-icons/hi";
 import PropTypes from "prop-types";
 import BadgeTrigger from "../form/BadgeTrigger";
+import LoadingComponent from "../LoadingComponent";
 
 const IngredientFilterSelect = ({ selectedData, onDataChange }) => {
   const [ingredients, setIngredients] = useState([]);
@@ -59,7 +60,7 @@ const IngredientFilterSelect = ({ selectedData, onDataChange }) => {
   return (
     <>
       {isLoading ? (
-        <div>Loading...</div>
+        <LoadingComponent />
       ) : (
         <div>
           <div className="mb-2 block">

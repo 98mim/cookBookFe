@@ -13,6 +13,7 @@ import { GiCook, GiCookingGlove, GiCookingPot } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 import CustomDifficultySelector from "../components/form/CustomDifficultySelector";
 import CustomCourseSelector from "../components/form/CustomCourseSelector";
+import LoadingComponent from "../components/LoadingComponent";
 
 function RecipeAdd() {
   const { id } = useParams();
@@ -115,7 +116,7 @@ function RecipeAdd() {
   return (
     <>
       {isLoading && isLoadingId ? (
-        <div>Loading...</div>
+        <LoadingComponent />
       ) : (
         <div className="flex flex-col items-center xl:m-0 p-2 w-full">
           <div className="flex flex-col xl:w-3/4 w-full p-2 xl:p-0">
