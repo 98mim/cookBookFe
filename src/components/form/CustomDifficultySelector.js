@@ -17,6 +17,7 @@ const CustomDifficultySelector = ({ onDataChange, data = "Medium" }) => {
   };
 
   const mapValueToAccentColor = (value) => {
+    console.log("mapValueToAccentColor called with value:", value);
     switch (value) {
       case 0:
         return "accent-green-200 active:accent-green-200 hover:accent-green-200";
@@ -27,7 +28,7 @@ const CustomDifficultySelector = ({ onDataChange, data = "Medium" }) => {
       case 3:
         return "accent-orange-500 active:accent-orange-500 hover:accent-orange-500";
       case 4:
-        return "accent-red-500 active:accent-red-500 hover:accent-red-500 ";
+        return "accent-red-500 active:accent-red-500 hover:accent-red-500";
       default:
         return "";
     }
@@ -37,47 +38,47 @@ const CustomDifficultySelector = ({ onDataChange, data = "Medium" }) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setValue(value);
-    onDataChange(name, mapValueToLabel(value));
+    setValue(parseInt(value, 10));
+    onDataChange(name, mapValueToLabel(parseInt(value, 10)));
   };
 
   return (
-    <div className={"w-full h-24"}>
+    <div className="w-full h-24">
       <div className="pl-2 mb-2 block">
         <Label value={t("Recipe.chooseDifficulty") + ":"}></Label>
         <span className="ml-1 text-red-500">*</span>
       </div>
-      <div className={"pl-7 pr-10"}>
+      <div className="pl-7 pr-10">
         <input
           type="range"
-          name={"difficulty"}
+          name="difficulty"
           min={0}
           max={4}
           step={1}
           value={value}
           onChange={handleChange}
-          className={`appearance-auto h-3 w-full cursor-pointer rounded-lg border-transparent  ${mapValueToAccentColor(value)} bg-gray-100 hoover:bg-gray-100 active:bg-gray-100`}
+          className={`appearance-auto h-3 w-full cursor-pointer rounded-lg border-transparent ${mapValueToAccentColor(value)} bg-gray-100 hover:bg-gray-100 active:bg-gray-100`}
         />
       </div>
-      <div className={"flex flex-row pl-7 pr-10 w-full justify-between"}>
-        <div className={"relative h-45"}>
-          <Badge className={"absolute -left-3"}>
+      <div className="flex flex-row pl-7 pr-10 w-full justify-between">
+        <div className="relative h-45">
+          <Badge className="absolute -left-3">
             {t("Difficulty.VERY_EASY")}
           </Badge>
         </div>
-        <div className={"relative"}>
-          <Badge className={"absolute -right-6"}>{t("Difficulty.EASY")}</Badge>
+        <div className="relative">
+          <Badge className="absolute -right-6">{t("Difficulty.EASY")}</Badge>
         </div>
-        <div className={"relative"}>
-          <Badge className={"absolute -left-7"}>{t("Difficulty.MEDIUM")}</Badge>
+        <div className="relative">
+          <Badge className="absolute -left-7">{t("Difficulty.MEDIUM")}</Badge>
         </div>
-        <div className={"relative"}>
-          <Badge className={"absolute -left-7"}>
+        <div className="relative">
+          <Badge className="absolute -left-7">
             {t("Difficulty.DIFFICULT")}
           </Badge>
         </div>
-        <div className={"relative"}>
-          <Badge className={"absolute -left-7"}>
+        <div className="relative">
+          <Badge className="absolute -left-7">
             {t("Difficulty.VERY_DIFFICULT")}
           </Badge>
         </div>
