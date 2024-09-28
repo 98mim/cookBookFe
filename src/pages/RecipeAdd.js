@@ -24,22 +24,22 @@ function RecipeAdd() {
   const [formData, setFormData] = useState({
     name: "",
     image: "",
-    prepTime: 0,
-    overallTime: 0,
-    cookTime: 0,
-    bakeTime: 0,
+    prep_time: 0,
+    overall_time: 0,
+    cook_time: 0,
+    bake_time: 0,
     difficulty: "MEDIUM",
-    courseType: "BREAKFAST",
+    course_type: "BREAKFAST",
     ingredients: [
       {
         weight: 0,
-        weightUnit: "",
+        weight_unit: "",
         food: {},
       },
     ],
     methods: [
       {
-        order: 1,
+        order_number: 1,
         body: "",
       },
     ],
@@ -49,7 +49,7 @@ function RecipeAdd() {
 
   useEffect(() => {
     request
-      .get(`/food/all`)
+      .get(`/api/food/all`)
       .then((response) => {
         setIngredients(response.data);
         setIsLoading(false);
@@ -60,16 +60,16 @@ function RecipeAdd() {
   useEffect(() => {
     setFormData((prevData) => ({
       ...prevData,
-      overallTime:
-        parseInt(prevData.cookTime) +
-        parseInt(prevData.bakeTime) +
-        parseInt(prevData.prepTime),
+      overall_time:
+        parseInt(prevData.cook_time) +
+        parseInt(prevData.bake_time) +
+        parseInt(prevData.prep_time),
     }));
-  }, [formData.cookTime, formData.bakeTime, formData.prepTime]);
+  }, [formData.cook_time, formData.bake_time, formData.prep_time]);
 
   useEffect(() => {
     request
-      .get(`/recipe/detail/${id}`)
+      .get(`/api/recipe/${id}`)
       .then((response) => {
         if (id != null) {
           setFormData(response.data);
@@ -80,6 +80,7 @@ function RecipeAdd() {
       .catch((error) => console.error(error));
   }, [id]);
   const handleDataChange = (name, value) => {
+    console.log(formData);
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
@@ -93,9 +94,9 @@ function RecipeAdd() {
     try {
       let response = null;
       if (id == null) {
-        response = await request.post("/recipe/add", formData);
+        response = await request.post("/api/recipe/add", formData);
       } else {
-        response = await request.post(`/recipe/update/${id}`, formData);
+        response = await request.post(`/api/recipe/update/${id}`, formData);
       }
       toast.update(toastId.current, {
         ...toastOptions,
@@ -165,7 +166,7 @@ function RecipeAdd() {
                       </div>
                     </div>
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl m-2">
-                      {formData.overallTime} min
+                      {formData.overall_time} min
                     </div>
                   </div>
 
@@ -178,9 +179,9 @@ function RecipeAdd() {
                     </div>
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl m-2">
                       <CustomTextInput
-                        fieldName={"prepTime"}
+                        fieldName={"prep_time"}
                         onDataChange={handleDataChange}
-                        data={formData.prepTime}
+                        data={formData.prep_time}
                         type={"number"}
                       />{" "}
                       min
@@ -196,9 +197,9 @@ function RecipeAdd() {
                     </div>
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl m-2">
                       <CustomTextInput
-                        fieldName={"bakeTime"}
+                        fieldName={"bake_time"}
                         onDataChange={handleDataChange}
-                        data={formData.bakeTime}
+                        data={formData.bake_time}
                         type={"number"}
                       />{" "}
                       min
@@ -213,9 +214,9 @@ function RecipeAdd() {
                     </div>
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl m-2">
                       <CustomTextInput
-                        fieldName={"cookTime"}
+                        fieldName={"cook_time"}
                         onDataChange={handleDataChange}
-                        data={formData.cookTime}
+                        data={formData.cook_time}
                         type={"number"}
                       />{" "}
                       min
@@ -241,7 +242,7 @@ function RecipeAdd() {
                 >
                   <CustomCourseSelector
                     onDataChange={handleDataChange}
-                    data={formData.courseType}
+                    data={formData.course_type}
                   />
                 </div>
               </div>

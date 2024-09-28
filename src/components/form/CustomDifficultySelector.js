@@ -1,23 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Badge, Label } from "flowbite-react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { difficulty } from "../../util/Difficulty";
 
-const CustomDifficultySelector = ({ onDataChange, data = "Medium" }) => {
+const CustomDifficultySelector = ({ onDataChange, data = "MEDIUM" }) => {
   const { t } = useTranslation();
   const difficultyLabels = difficulty;
 
   const mapLabelToValue = (label) => {
-    return difficultyLabels.indexOf(label); // Get the index of the label
+    return difficultyLabels.indexOf(label);
   };
 
   const mapValueToLabel = (value) => {
-    return difficultyLabels[value]; // Get the label at the specified index
+    return difficultyLabels[value];
   };
 
+  const [value, setValue] = useState(mapLabelToValue(data));
+
+  useEffect(() => {
+    setValue(mapLabelToValue(data));
+  }, [data]);
+
   const mapValueToAccentColor = (value) => {
-    console.log("mapValueToAccentColor called with value:", value);
     switch (value) {
       case 0:
         return "accent-green-200 active:accent-green-200 hover:accent-green-200";
@@ -33,8 +38,6 @@ const CustomDifficultySelector = ({ onDataChange, data = "Medium" }) => {
         return "";
     }
   };
-
-  const [value, setValue] = useState(mapLabelToValue(data));
 
   const handleChange = (event) => {
     const { name, value } = event.target;

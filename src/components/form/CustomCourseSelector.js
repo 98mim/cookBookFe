@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { useTranslation } from "react-i18next";
 import { courseTypes } from "../../util/CourseTypes";
 
 const CustomCourseSelector = ({ onDataChange, data }) => {
+  console.log(data);
   const [selectedOption, setSelectedOption] = useState(data);
   const { t } = useTranslation();
   const options = courseTypes;
 
+  useEffect(() => {
+    setSelectedOption(data);
+  }, [data]);
+
   const handleChange = (option) => {
     setSelectedOption(option);
-    onDataChange("courseType", option);
+    onDataChange("course_type", option);
   };
 
   return (

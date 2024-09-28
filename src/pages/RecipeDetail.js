@@ -13,9 +13,10 @@ function RecipeDetail() {
 
   useEffect(() => {
     request
-      .get(`/recipe/detail/${id}`) // Use request.get instead of get
+      .get(`/api/recipe/${id}`) // Use request.get instead of get
       .then((response) => {
-        setRecipe(response.data); // Use response.data to access the data
+        setRecipe(response.data);
+        console.log(response.data);
         setIsLoading(false);
       })
       .catch((error) => console.error(error));

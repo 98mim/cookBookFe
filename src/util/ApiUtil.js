@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "http://localhost:8000/api";
 
 const handleResponse = (response) => {
   if (!response.ok) {
@@ -23,6 +23,7 @@ const getAuthHeaders = () => {
 export const get = (endpoint) => {
   const url = `${BASE_URL}${endpoint}`;
   const headers = getAuthHeaders();
+  console.log(url);
 
   return fetch(url, { headers }).then(handleResponse);
 };

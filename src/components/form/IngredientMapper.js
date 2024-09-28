@@ -39,12 +39,12 @@ const IngredientMapper = ({
       </div>
       <div className={"flex w-2/6 items-center"}>
         <CustomTextInput
-          fieldName={"weightUnit"}
+          fieldName={"weight_unit"}
           label={t("Recipe.weightUnit")}
           placeholder={t("Recipe.chooseWeightType")}
           isRequired={true}
           onDataChange={(name, value) => handleChange(i, name, value)}
-          data={ingredient.weightUnit || ""}
+          data={ingredient.weight_unit || ""}
         />
       </div>
       <div className={"flex items-center w-1/6"}>

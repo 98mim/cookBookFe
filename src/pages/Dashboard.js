@@ -8,9 +8,9 @@ function Dashboard() {
   const [data, setData] = useState([]);
   useEffect(() => {
     request
-      .get("/profile/me")
+      .get("/api/user/me")
       .then((response) => {
-        setData(response.data);
+        setData(response.data.data);
         setIsLoading(false);
       })
       .catch((error) => console.error(error));

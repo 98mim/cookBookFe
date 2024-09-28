@@ -27,23 +27,22 @@ function Home() {
   });
 
   useEffect(() => {
-    // Function to determine the number of items per page based on screen size
     const updateItemsPerPage = () => {
       const width = window.innerWidth;
       if (width >= 1024) {
-        setItemsPerPage(15); // 3 columns x 5 rows
+        setItemsPerPage(15);
       } else if (width >= 768) {
-        setItemsPerPage(10); // 2 columns x 5 rows
+        setItemsPerPage(10);
       } else {
-        setItemsPerPage(5); // 1 column x 5 rows
+        setItemsPerPage(5);
       }
     };
 
-    updateItemsPerPage(); // Initial call
-    window.addEventListener("resize", updateItemsPerPage); // Update on resize
+    updateItemsPerPage();
+    window.addEventListener("resize", updateItemsPerPage);
 
     return () => {
-      window.removeEventListener("resize", updateItemsPerPage); // Cleanup on unmount
+      window.removeEventListener("resize", updateItemsPerPage);
     };
   }, []);
 
@@ -54,32 +53,32 @@ function Home() {
 
   const onPageChange = (page) => {
     console.log(filter);
-    console.log("on page change " + (page - 1));
-    fetchRecipes(page - 1, itemsPerPage);
+    console.log("on page change " + page);
+    fetchRecipes(page, itemsPerPage);
   };
 
-  const fetchRecipes = (page = 0, itemsPerPage) => {
+  const fetchRecipes = (page = 1, itemsPerPage) => {
     setIsLoading(true);
     const endpoint =
       filter &&
       Object.values(filter).some(
         (val) => val !== null && val !== "" && val !== 0 && val.length !== 0,
       )
-        ? "/book/filter"
-        : "/book/all";
+        ? "/api/book/filter"
+        : "/api/book/all";
     const requestData =
-      endpoint === "/book/filter"
+      endpoint === "/api/book/filter"
         ? { ...filter, page, size: itemsPerPage }
         : { page, size: itemsPerPage };
 
     const requestMethod =
-      endpoint === "/book/filter" ? request.post : request.get;
+      endpoint === "/api/book/filter" ? request.post : request.get;
 
     requestMethod(endpoint + `?page=${page}&size=${itemsPerPage}`, requestData)
       .then((response) => {
-        setRecipes(response.data.content);
-        setAllPage(response.data.totalPages);
-        setCurrentPage(response.data.pageable.pageNumber);
+        setRecipes(response.data.data);
+        setAllPage(response.data.last_page);
+        setCurrentPage(response.data.current_page);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -94,15 +93,15 @@ function Home() {
 
   useEffect(() => {
     request
-      .post("/book/filter", filter)
+      .post(`/api/book/filter?page=1&size=${itemsPerPage}`, filter)
       .then((response) => {
-        setRecipes(response.data.content);
-        setAllPage(response.data.totalPages);
-        setCurrentPage(response.pageable.pageNumber);
+        setRecipes(response.data.data);
+        setAllPage(response.data.last_page);
+        setCurrentPage(response.data.current_page);
         setIsLoading(false);
       })
       .catch((error) => console.error(error));
-  }, [filter]);
+  }, [filter, itemsPerPage, currentPage]);
 
   return (
     <div>

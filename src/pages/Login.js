@@ -32,7 +32,7 @@ function Login() {
       autoClose: false,
     });
     try {
-      const response = await request.post("/auth/authenticate", formData);
+      const response = await request.post("/login", formData);
 
       toast.update(toastId.current, {
         ...toastOptions,

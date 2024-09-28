@@ -49,7 +49,7 @@ const CustomCard = ({ recipe, update }) => {
               </div>
             </div>
             <div className="text-2xl md:text-3xl m-2">
-              {recipe.overallTime} min
+              {recipe.overall_time} min
             </div>
           </div>
 
@@ -63,13 +63,13 @@ const CustomCard = ({ recipe, update }) => {
               </div>
             </div>
             <div className="text-2xl md:text-3xl m-2">
-              {recipe.prepTime} min
+              {recipe.prep_time} min
             </div>
           </div>
         </div>
 
         <div className={"flex md:flex-row"}>
-          {recipe.bakeTime > 0 && (
+          {recipe.bake_time > 0 && (
             <div className="flex flex-row items-center">
               <div className="flex flex-col items-center">
                 <div>
@@ -80,12 +80,12 @@ const CustomCard = ({ recipe, update }) => {
                 </div>
               </div>
               <div className="text-2xl md:text-3xl m-2">
-                {recipe.bakeTime} min
+                {recipe.bake_time} min
               </div>
             </div>
           )}
 
-          {recipe.cookTime > 0 && (
+          {recipe.cook_time > 0 && (
             <div className="flex flex-row items-center">
               <div className="flex flex-col items-center">
                 <div>
@@ -96,7 +96,7 @@ const CustomCard = ({ recipe, update }) => {
                 </div>
               </div>
               <div className="text-2xl md:text-3xl m-2">
-                {recipe.cookTime} min
+                {recipe.cook_time} min
               </div>
             </div>
           )}

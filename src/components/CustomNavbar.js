@@ -23,9 +23,9 @@ const CustomNavbar = () => {
   useEffect(() => {
     if (isLoggedIn) {
       request
-        .get("/profile/me")
+        .get("/api/user/me")
         .then((response) => {
-          setUserData(response.data);
+          setUserData(response.data.data);
         })
         .catch((error) => console.error(error));
     }

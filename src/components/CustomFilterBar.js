@@ -13,6 +13,7 @@ const CustomFilterBar = ({
   const { t } = useTranslation();
 
   const handleOpenDrawer = () => {
+    console.log("hey ano");
     setIsOpen(true);
     console.log("opening" + isOpen);
   };

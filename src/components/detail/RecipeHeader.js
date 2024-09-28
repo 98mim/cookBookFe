@@ -31,7 +31,7 @@ const RecipeHeader = ({ detail }) => {
               <div className="text-md sm:text-lg">{t("Time.overall")}</div>
             </div>
             <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl m-2">
-              {detail.overallTime} min
+              {detail.overall_time} min
             </div>
           </div>
 
@@ -43,11 +43,11 @@ const RecipeHeader = ({ detail }) => {
               <div className="text-md sm:text-lg">{t("Time.prep")}</div>
             </div>
             <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl m-2">
-              {detail.prepTime} min
+              {detail.prep_time} min
             </div>
           </div>
 
-          {detail.bakeTime > 0 && (
+          {detail.bake_time > 0 && (
             <div className="flex flex-row items-center">
               <div className="flex flex-col items-center">
                 <div>
@@ -56,12 +56,12 @@ const RecipeHeader = ({ detail }) => {
                 <div className="text-md sm:text-lg">{t("Time.bake")}</div>
               </div>
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl m-2">
-                {detail.bakeTime} min
+                {detail.bake_time} min
               </div>
             </div>
           )}
 
-          {detail.cookTime > 0 && (
+          {detail.cook_time > 0 && (
             <div className="flex flex-row items-center">
               <div className="flex flex-col items-center">
                 <div>
@@ -70,7 +70,7 @@ const RecipeHeader = ({ detail }) => {
                 <div className="text-md sm:text-lg">{t("Time.cook")}</div>
               </div>
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl m-2">
-                {detail.cookTime} min
+                {detail.cook_time} min
               </div>
             </div>
           )}
@@ -81,7 +81,7 @@ const RecipeHeader = ({ detail }) => {
             <div
               className={`h-20 m-2 text-2xl cursor-pointer hover:cursor-pointer flex items-center justify-center rounded-lg bg-indigo-100`}
             >
-              {t("CourseType." + detail.courseType)}
+              {t("CourseType." + detail.course_type)}
             </div>
           </div>
         </div>

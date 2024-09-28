@@ -13,9 +13,9 @@ function RecipesCourseType() {
 
   useEffect(() => {
     request
-      .get(`/book/course_type/${type}`)
+      .get(`/api/book/course_type/${type}`)
       .then((response) => {
-        setRecipes(response.data.content);
+        setRecipes(response.data.data);
         setIsLoading(false);
       })
       .catch((error) => console.error(error));

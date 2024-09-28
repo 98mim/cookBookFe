@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import { Timeline } from "flowbite-react";
 import PropTypes from "prop-types";
 import CustomTextArea from "./CustomTextArea";
@@ -10,8 +10,10 @@ const reducer = (methods, action) => {
   switch (action.type) {
     case "addMethod":
       return [...methods, action.newMethod];
-    //case "updateMethod":
-    //return [...action.updatedMethods];
+    case "updateMethod":
+      return [...action.updatedMethods];
+    case "setMethods":
+      return [...action.methods];
     default:
       return methods;
   }
@@ -19,19 +21,28 @@ const reducer = (methods, action) => {
 
 const MethodForm = ({ methodData, handleDataChange }) => {
   const { t } = useTranslation();
+
   const [methods, dispatch] = useReducer(
     reducer,
-    methodData.sort((a, b) => a.order - b.order),
+    methodData.sort((a, b) => a.order_number - b.order_number),
   );
   let count = methods.length;
 
+  useEffect(() => {
+    dispatch({
+      type: "setMethods",
+      methods: methodData.sort((a, b) => a.order_number - b.order_number),
+    });
+  }, [methodData]);
+
   const handleButtonClick = () => {
     count += 1;
+    const newMethod = { order_number: count, body: "" };
     dispatch({
       type: "addMethod",
-      newMethod: { order: count, body: "" },
+      newMethod,
     });
-    handleDataChange("methods", methods);
+    handleDataChange("methods", [...methods, newMethod]);
   };
 
   const handleChange = (index, value) => {

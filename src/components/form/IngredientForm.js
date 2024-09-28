@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useEffect } from "react";
 import PropTypes from "prop-types";
 import IngredientMapper from "./IngredientMapper";
 import CustomButton from "../CustomButton";
@@ -10,6 +10,8 @@ const reducer = (ingredients, action) => {
       return [...ingredients, action.newIngredient];
     case "updateIngredient":
       return [...action.updatedIngredients];
+    case "setIngredients":
+      return [...action.ingredients];
     default:
       return ingredients;
   }
@@ -19,12 +21,20 @@ const IngredientForm = ({ foodData, handleDataChange, ingredientsData }) => {
   const [ingredients, dispatch] = useReducer(reducer, ingredientsData);
   const { t } = useTranslation();
 
+  useEffect(() => {
+    dispatch({
+      type: "setIngredients",
+      ingredients: ingredientsData,
+    });
+  }, [ingredientsData]);
+
   const handleButtonClick = () => {
+    const newIngredient = { weight: 0, weight_unit: "", food: {} };
     dispatch({
       type: "addIngredient",
-      newIngredient: { weight: 0, weightUnit: "", food: {} },
+      newIngredient,
     });
-    handleDataChange("ingredients", ingredients);
+    handleDataChange("ingredients", [...ingredients, newIngredient]);
   };
 
   const handleChange = (index, name, value) => {

@@ -17,7 +17,7 @@ const IngredientFilterSelect = ({ selectedData, onDataChange }) => {
 
   useEffect(() => {
     request
-      .get(`/food/all`)
+      .get(`/api/food/all`)
       .then((response) => {
         setIngredients(response.data);
         setIsLoading(false);
