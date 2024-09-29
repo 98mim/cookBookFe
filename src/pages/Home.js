@@ -58,6 +58,7 @@ function Home() {
   };
 
   const fetchRecipes = (page = 1, itemsPerPage) => {
+    console.log(filter);
     setIsLoading(true);
     const endpoint =
       filter &&

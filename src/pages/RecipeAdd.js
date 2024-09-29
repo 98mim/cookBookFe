@@ -131,7 +131,7 @@ function RecipeAdd() {
             <form className="flex flex-col gap-4 m-2" onSubmit={handleSubmit}>
               <div
                 className={
-                  "bg-purple-50 m-1 px-2 pt-2 rounded-lg shadow-purple-300 shadow-xl gap-4"
+                  "flex flex-col bg-purple-50 m-1 px-2 pt-2 rounded-lg shadow-purple-300 shadow-xl gap-4"
                 }
               >
                 <CustomTextInput
@@ -141,20 +141,22 @@ function RecipeAdd() {
                   onDataChange={handleDataChange}
                   data={formData.name}
                 />
-                {formData.imagePath == null && (
-                  <Thumbnail
-                    name={"image"}
-                    defaultValue={formData.image}
-                    urlName={"thumbnail_link"}
-                    onSelect={(name, value) => handleDataChange(name, value)}
-                  />
-                )}
-                {formData.imagePath && (
-                  <img
-                    src={`http://localhost:8080/image/${formData.imagePath}`}
-                    className="w-full lg:w-3/4 max-h-1/2"
-                  />
-                )}
+                <div className="flex row w-full max-h-1/2 justify-center">
+                  {formData.image_path == null && (
+                    <Thumbnail
+                      name={"image"}
+                      defaultValue={formData.image}
+                      urlName={"thumbnail_link"}
+                      onSelect={(name, value) => handleDataChange(name, value)}
+                    />
+                  )}
+                  {formData.image_path && (
+                    <img
+                      src={`http://localhost:8000${formData.image_path}`}
+                      alt={"recipe image"}
+                    />
+                  )}{" "}
+                </div>
                 <div className="flex justify-between w-full sm:flex-row flex-col">
                   <div className="flex flex-row items-center text-center">
                     <div className="flex flex-col items-center">

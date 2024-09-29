@@ -6,6 +6,7 @@ import { GiCook, GiCookingGlove, GiCookingPot } from "react-icons/gi";
 import { useTranslation } from "react-i18next";
 
 const CustomCard = ({ recipe, update }) => {
+  console.log(recipe);
   const navigate = useNavigate();
   const { t } = useTranslation();
 
@@ -21,9 +22,13 @@ const CustomCard = ({ recipe, update }) => {
 
   return (
     <Card
-      className="relative w-full p-2 flex " // Adjust the width for different screen sizes
+      className="relative w-full p-2 flex "
       imgAlt="recipes photo"
-      imgSrc={`http://localhost:8080/image/${recipe.imagePath}`}
+      imgSrc={
+        recipe.image_path
+          ? `http://localhost:8000/storage/${recipe.image_path}`
+          : "http://localhost:8000/storage/recipes/no-image.png"
+      }
       onClick={handleCardClick}
     >
       {update && (

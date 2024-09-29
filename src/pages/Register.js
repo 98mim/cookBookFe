@@ -24,12 +24,12 @@ function RegistrationPage() {
     name: "",
     email: "",
     password: "",
-    passwordRepeat: "",
+    password_confirmation: "",
   });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (formData.password !== formData.passwordRepeat) {
+    if (formData.password !== formData.password_confirmation) {
       setPasswordError(true);
       return;
     }
@@ -40,7 +40,7 @@ function RegistrationPage() {
       autoClose: false,
     });
     try {
-      const response = await request.post("/auth/register", formData);
+      const response = await request.post("/register", formData);
       toast.update(toastId.current, {
         ...toastOptions,
         render: "Submit successfully",
@@ -92,7 +92,7 @@ function RegistrationPage() {
             ))}
           </>
 
-          {["password", "passwordRepeat"].map((fieldName) => (
+          {["password", "password_confirmation"].map((fieldName) => (
             <div key={fieldName}>
               <div className="mb-2 block">
                 <Label htmlFor={fieldName} value={`Your ${fieldName}`} />

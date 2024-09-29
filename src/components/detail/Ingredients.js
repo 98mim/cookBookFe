@@ -6,9 +6,9 @@ import { useTranslation } from "react-i18next";
 const Ingredients = ({ ingredients }) => {
   const { t } = useTranslation();
 
-  const setWeightUnit = (weightUnit) => {
-    let shortcut = weightUnit;
-    switch (weightUnit) {
+  const setWeightUnit = (weight_unit) => {
+    let shortcut = weight_unit;
+    switch (weight_unit) {
       case "KILOGRAMS":
         shortcut = "kg";
         break;
@@ -28,7 +28,7 @@ const Ingredients = ({ ingredients }) => {
               <div className="flex flex-row justify-between m-3">
                 <div>{ingredient.food.name}</div>
                 <div>
-                  {ingredient.weight} {setWeightUnit(ingredient.weightUnit)}
+                  {ingredient.weight} {setWeightUnit(ingredient.weight_unit)}
                 </div>
               </div>
             </List.Item>
