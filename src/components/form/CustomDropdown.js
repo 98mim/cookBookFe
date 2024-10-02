@@ -1,11 +1,15 @@
 import { Button, Dropdown, TextInput } from "flowbite-react";
 import { HiOutlineSearch } from "react-icons/hi";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const CustomDropdown = ({ fieldName, data, label, onDataChange }) => {
   const [selectedItem, setSelectedItem] = useState(label);
   const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    setSelectedItem(label);
+  }, [label]);
 
   const handleSearchInputChange = (event) => {
     event.preventDefault();

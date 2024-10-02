@@ -141,7 +141,7 @@ function RecipeAdd() {
                   onDataChange={handleDataChange}
                   data={formData.name}
                 />
-                <div className="flex row w-full max-h-1/2 justify-center">
+                <div className=" row w-full max-h-1/2 justify-center">
                   {formData.image_path == null && (
                     <Thumbnail
                       name={"image"}

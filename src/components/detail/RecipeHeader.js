@@ -14,7 +14,7 @@ const RecipeHeader = ({ detail }) => {
         {detail.name}
       </h1>
       <img
-        src={`http://localhost:8000${detail.image_path}`}
+        src={`http://localhost:8000/storage/${detail.image_path}`}
         className="w-full lg:w-3/4 max-h-1/2"
       />
       <div

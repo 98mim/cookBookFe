@@ -10,6 +10,7 @@ function Login() {
   const navigate = useNavigate();
   const { login } = useUser();
   const toastId = useRef(null);
+  const [errorMessage, setErrorMessage] = useState(""); // Store error message here
 
   const handleRegisterButtonClick = () => {
     navigate("/register");
@@ -47,6 +48,16 @@ function Login() {
         render: "Something happened wrong",
         type: "error",
       });
+      if (
+        error.response &&
+        error.response.data &&
+        error.response.data.message
+      ) {
+        setErrorMessage(error.response.data.message); // Set the error message from the response
+      } else {
+        setErrorMessage("An error occurred. Please try again."); // Fallback message
+      }
+
       console.error(error);
     }
   };
@@ -78,6 +89,9 @@ function Login() {
               />
             </div>
           ))}
+          {errorMessage && (
+            <div className="text-red-500 mb-1">{errorMessage}</div>
+          )}
 
           <div className={"text-gray-700"}>
             <div>

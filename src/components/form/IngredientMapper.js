@@ -13,6 +13,7 @@ const IngredientMapper = ({
   handleDelete,
 }) => {
   const { t } = useTranslation();
+  console.log(ingredients);
 
   return ingredients.map((ingredient, i) => (
     <div

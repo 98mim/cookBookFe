@@ -1,5 +1,5 @@
 import { Navbar, Dropdown } from "flowbite-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import { useUser } from "../context/UserContext";
 import { useEffect, useRef, useState } from "react";
 import CustomButton from "./CustomButton";
@@ -11,6 +11,7 @@ import { useTranslation } from "react-i18next";
 
 const CustomNavbar = () => {
   const navigate = useNavigate();
+  const location = useLocation(); // Use useLocation to get the current route
   const { user, logout } = useUser();
   const [isLoggedIn, setIsLoggedIn] = useState(!!user);
   const [userData, setUserData] = useState([]);
@@ -20,6 +21,7 @@ const CustomNavbar = () => {
   useEffect(() => {
     setIsLoggedIn(!!user);
   }, [user]);
+
   useEffect(() => {
     if (isLoggedIn) {
       request
@@ -44,19 +46,22 @@ const CustomNavbar = () => {
       logout();
       toast.update(toastId.current, {
         ...toastOptions,
-        render: "Submit successfully",
+        render: "Logged out successfully",
         type: "success",
       });
       navigate("/");
     } catch (error) {
       toast.update(toastId.current, {
         ...toastOptions,
-        render: "Something happened wrong",
+        render: "Something went wrong",
         type: "error",
       });
       console.error(error);
     }
   };
+
+  // Function to determine if a link is active based on the current path
+  const isActive = (path) => location.pathname === path;
 
   return (
     <Navbar fluid rounded>
@@ -66,6 +71,7 @@ const CustomNavbar = () => {
           Be Your Chef
         </span>
       </Navbar.Brand>
+
       {isLoggedIn ? (
         <div className="flex md:order-2">
           <CustomLanguageDropdown />
@@ -75,7 +81,7 @@ const CustomNavbar = () => {
             gradientDuoTone="purpleToPink"
             arrowIcon={false}
             label={
-              <div className={"flex items-center justify-center"}>
+              <div className="flex items-center justify-center">
                 {userData?.name?.charAt(0).toUpperCase()}
               </div>
             }
@@ -105,23 +111,36 @@ const CustomNavbar = () => {
           <Navbar.Toggle />
         </div>
       )}
+
       <Navbar.Collapse>
-        <Navbar.Link onClick={() => navigate("/")} active>
+        <Navbar.Link
+          onClick={() => navigate("/")}
+          active={isActive("/")} // Set active if on the homepage
+        >
           {t("Home.home")}
         </Navbar.Link>
-        <Navbar.Link onClick={() => navigate("/recipe/course_type/MAIN_DISH")}>
+        <Navbar.Link
+          onClick={() => navigate("/recipe/course_type/MAIN_DISH")}
+          active={isActive("/recipe/course_type/MAIN_DISH")} // Active when on the main dish page
+        >
           {t("CourseType.MAIN_DISH")}
         </Navbar.Link>
-        <Navbar.Link onClick={() => navigate("/recipe/course_type/SOUP")}>
-          {" "}
+        <Navbar.Link
+          onClick={() => navigate("/recipe/course_type/SOUP")}
+          active={isActive("/recipe/course_type/SOUP")} // Active when on the soup page
+        >
           {t("CourseType.SOUP")}
         </Navbar.Link>
-        <Navbar.Link onClick={() => navigate("/recipe/course_type/SWEET")}>
-          {" "}
+        <Navbar.Link
+          onClick={() => navigate("/recipe/course_type/SWEET")}
+          active={isActive("/recipe/course_type/SWEET")} // Active when on the sweet course page
+        >
           {t("CourseType.SWEET")}
         </Navbar.Link>
-        <Navbar.Link onClick={() => navigate("/recipe/course_type/SALTY")}>
-          {" "}
+        <Navbar.Link
+          onClick={() => navigate("/recipe/course_type/SALTY")}
+          active={isActive("/recipe/course_type/SALTY")} // Active when on the salty course page
+        >
           {t("CourseType.SALTY")}
         </Navbar.Link>
       </Navbar.Collapse>
